@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooftop Truth Meter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="brand">
+        ☀️ Rooftop <span>Truth Meter</span>
+    </div>
+    <div class="nav-right">
+        <span class="status">● System Online</span>
+        <span class="user">Solar User</span>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <p class="eyebrow">SOLAR PERFORMANCE ANALYTICS</p>
+            <h1>Know the Truth About Your Solar Energy.</h1>
+            <p>Monitor generation, discover energy gaps and understand
+               your estimated financial loss.</p>
+        </div>
+        <div class="sun-icon">☀️</div>
+    </section>
+
+    <section class="input-section">
+        <h2>Enter Your Solar Details</h2>
+
+        <div class="form-grid">
+            <div class="field">
+                <label>Location</label>
+                <input type="text" id="location"
+                       placeholder="e.g. Chennai">
+            </div>
+
+            <div class="field">
+                <label>Solar Panel Capacity (kW)</label>
+                <input type="number" id="capacity"
+                       value="5" min="0.1" step="0.1">
+            </div>
+
+            <div class="field">
+                <label>Expected Generation (kWh/day)</label>
+                <input type="number" id="expected"
+                       value="24" min="0" step="0.1">
+            </div>
+
+            <div class="field">
+                <label>Actual Generation (kWh/day)</label>
+                <input type="number" id="actual"
+                       value="16.8" min="0" step="0.1">
+            </div>
+
+            <div class="field">
+                <label>Electricity Tariff (₹/unit)</label>
+                <input type="number" id="tariff"
+                       value="8" min="0" step="0.1">
+            </div>
+
+            <div class="field">
+                <label>Possible Performance Issues</label>
+                <select id="issue">
+                    <option value="none">Not sure / No known issue</option>
+                    <option value="dust">Dust or dirt on panels</option>
+                    <option value="shade">Shading from trees/buildings</option>
+                    <option value="heat">High panel temperature</option>
+                    <option value="inverter">Inverter downtime</option>
+                    <option value="damage">Panel damage</option>
+                </select>
+            </div>
+        </div>
+
+        <button onclick="calculatePerformance()">
+            Analyze Solar Performance →
+        </button>
+        <p class="note">Enter your daily solar generation values to
+            calculate your performance.</p>
+    </section>
+
+    <section id="results" class="results">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">YOUR SOLAR REPORT</p>
+                <h2>Performance Overview</h2>
+            </div>
+            <span class="live-label">● ANALYSIS READY</span>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <p>Expected Generation</p>
+                <h2 id="expectedResult">24.0</h2>
+                <small>kWh / day</small>
+            </div>
+
+            <div class="stat-card">
+                <p>Actual Generation</p>
+                <h2 id="actualResult">16.8</h2>
+                <small>kWh / day</small>
+            </div>
+
+            <div class="stat-card">
+                <p>Energy Gap</p>
+                <h2 id="gapResult">7.2</h2>
+                <small>kWh / day</small>
+            </div>
+
+            <div class="stat-card">
+                <p>Estimated Daily Loss</p>
+                <h2 id="lossResult">₹57.60</h2>
+                <small>Per day</small>
+            </div>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="panel">
+                <h3>Solar Performance Meter</h3>
+
+                <div class="meter">
+                    <div class="meter-circle" id="meterCircle">
+                        <div>
+                            <strong id="percentage">70%</strong>
+                            <small>Efficiency</small>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="performanceStatus" class="good">
+                    Performance Needs Attention
+                </h3>
+
+                <p class="description" id="performanceMessage">
+                    Your solar system is generating below its expected
+                    output.
+                </p>
+            </div>
+
+            <div class="panel">
+                <h3>Generation Comparison</h3>
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Expected Energy</span>
+                        <b id="expectedBarLabel">24 kWh</b>
+                    </div>
+                    <div class="bar-bg">
+                        <div class="bar expected-bar" id="expectedBar"></div>
+                    </div>
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Actual Energy</span>
+                        <b id="actualBarLabel">16.8 kWh</b>
+                    </div>
+                    <div class="bar-bg">
+                        <div class="bar actual-bar" id="actualBar"></div>
+                    </div>
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Energy Lost</span>
+                        <b id="gapBarLabel">7.2 kWh</b>
+                    </div>
+                    <div class="bar-bg">
+                        <div class="bar loss-bar" id="gapBar"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel recommendation">
+            <h3>🔍 Performance Insights</h3>
+            <h4 id="issueTitle">Possible Performance Issue</h4>
+            <p id="issueMessage">
+                Check your solar panels for dust and shading.
+            </p>
+
+            <h4>Recommended Actions</h4>
+            <ul id="recommendations">
+                <li>Inspect solar panels for dust.</li>
+                <li>Check for shadows on the panels.</li>
+                <li>Check inverter performance.</li>
+            </ul>
+        </div>
+
+        <div class="panel financial">
+            <h3>💰 Estimated Financial Impact</h3>
+            <div class="financial-grid">
+                <div>
+                    <p>Daily Loss</p>
+                    <h2 id="dailyLoss">₹57.60</h2>
+                </div>
+                <div>
+                    <p>Monthly Loss (30 days)</p>
+                    <h2 id="monthlyLoss">₹1,728.00</h2>
+                </div>
+                <div>
+                    <p>Yearly Loss (365 days)</p>
+                    <h2 id="yearlyLoss">₹21,024.00</h2>
+                </div>
+            </div>
+            <p class="note">
+                Estimates assume the same generation gap and tariff
+                throughout the period.
+            </p>
+        </div>
+
+        <div class="report-footer">
+            <button onclick="window.print()" class="print-btn">
+                Download / Print Report
+            </button>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Rooftop Truth Meter | Clean Energy, Clear Information.</p>
+    <p>Prototype demonstration – values depend on user input.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

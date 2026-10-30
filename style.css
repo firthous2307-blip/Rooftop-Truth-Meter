@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f7f6;
+    color: #19332f;
+}
+
+.navbar {
+    background: #102f2a;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.brand span {
+    color: #41d6a0;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 13px;
+}
+
+.status {
+    color: #56e6a5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.welcome {
+    margin: 35px 0;
+    padding: 35px;
+    background: linear-gradient(120deg, #124e42, #16866c);
+    color: white;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #41d6a0;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.welcome h1 {
+    font-size: clamp(25px, 4vw, 38px);
+    max-width: 650px;
+    margin-bottom: 15px;
+}
+
+.welcome p {
+    color: #d7eee7;
+    line-height: 1.6;
+}
+
+.sun-icon {
+    font-size: 65px;
+}
+
+.input-section,
+.panel {
+    background: white;
+    padding: 28px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px #183c3010;
+}
+
+.input-section h2,
+.section-heading h2 {
+    margin-bottom: 23px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    height: 48px;
+    padding: 0 13px;
+    border: 1px solid #d5e1dc;
+    border-radius: 9px;
+    background: #fbfdfc;
+    outline: none;
+    font-size: 14px;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #159b72;
+}
+
+button {
+    margin-top: 24px;
+    padding: 15px 25px;
+    background: #12835f;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0c674b;
+}
+
+.note {
+    margin-top: 14px;
+    font-size: 11px;
+    color: #778c83;
+    line-height: 1.5;
+}
+
+.results {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.live-label {
+    font-size: 11px;
+    color: #12835f;
+    font-weight: bold;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 13px;
+    border-left: 4px solid #19a77a;
+    box-shadow: 0 4px 18px #183c3010;
+}
+
+.stat-card p {
+    font-size: 12px;
+    color: #6a8178;
+    margin-bottom: 14px;
+}
+
+.stat-card h2 {
+    font-size: 25px;
+    color: #145b47;
+    margin-bottom: 6px;
+}
+
+.stat-card small {
+    color: #87978f;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.panel h3 {
+    font-size: 17px;
+    margin-bottom: 22px;
+}
+
+.meter {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.meter-circle {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(
+        #20ad7c 0deg 252deg,
+        #e6eee9 252deg 360deg
+    );
+    position: relative;
+}
+
+.meter-circle::before {
+    content: "";
+    position: absolute;
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    background: white;
+}
+
+.meter-circle div {
+    z-index: 1;
+    text-align: center;
+}
+
+.meter-circle strong {
+    display: block;
+    font-size: 32px;
+    color: #155b45;
+}
+
+.meter-circle small {
+    color: #82948b;
+}
+
+.good {
+    color: #c47b1d;
+    text-align: center;
+    font-size: 14px;
+}
+
+.description {
+    text-align: center;
+    font-size: 12px;
+    color: #75867e;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.bar-item {
+    margin: 25px 0;
+}
+
+.bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.bar-label b {
+    color: #235c4a;
+}
+
+.bar-bg {
+    height: 12px;
+    width: 100%;
+    background: #eaf0ed;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    width: 0;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.expected-bar {
+    background: #3998df;
+}
+
+.actual-bar {
+    background: #19a879;
+}
+
+.loss-bar {
+    background: #ef9c43;
+}
+
+.recommendation,
+.financial {
+    margin-bottom: 20px;
+}
+
+.recommendation h4 {
+    margin: 18px 0 10px;
+    color: #17765a;
+}
+
+.recommendation p,
+.recommendation li {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #62766c;
+}
+
+.recommendation ul {
+    padding-left: 22px;
+}
+
+.financial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.financial-grid p {
+    font-size: 12px;
+    color: #71857a;
+    margin-bottom: 10px;
+}
+
+.financial-grid h2 {
+    color: #12835f;
+    font-size: 23px;
+}
+
+.report-footer {
+    text-align: center;
+}
+
+.print-btn {
+    background: #183e35;
+}
+
+footer {
+    background: #102f2a;
+    color: #c6dcd4;
+    text-align: center;
+    padding: 22px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+@media(max-width: 800px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome {
+        padding: 25px;
+    }
+}
+
+@media(max-width: 550px) {
+    .form-grid,
+    .financial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .input-section,
+    .panel {
+        padding: 19px;
+    }
+
+    .sun-icon {
+        font-size: 35px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .navbar,
+    .input-section,
+    footer,
+    .report-footer {
+        display: none;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .results {
+        display: block;
+    }
+
+    .panel,
+    .stat-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+    }
+}
